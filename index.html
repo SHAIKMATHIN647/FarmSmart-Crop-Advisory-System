@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FarmSmart - Smart Crop Advisory</title>
+  <link rel="stylesheet" href="register.css" />
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <!-- Your header content (e.g., logo, etc.) -->
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <h1>FarmSmart</h1>
+    <ul>
+      <li><a href="weather.html">Weather</a></li>
+      <li><a href="product.html">Products</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="register.html">Login</a></li>
+    </ul>
+  </nav>
+  
+
+  <!-- Main Section with Hero Banner -->
+  <main>
+    <section class="hero">
+      <h2>Welcome to FarmSmart</h2>
+      <p>Empowering smarter harvests — with real-time weather insights and crop recommendations tailored for your land</p>
+    </section>
+
+    <!-- Registration Success Message -->
+    <section id="registration-success" class="info-section" style="display:none;">
+      <h2>Registration Successful!</h2>
+      <p>Congratulations! You have successfully registered with FarmSmart. Now, let's start using real-time weather insights and crop recommendations tailored for your farm.</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="info-section">
+      <h2>About FarmSmart</h2>
+      <p>
+        <strong>FarmSmart</strong> is a cutting-edge <strong>weather-based crop advisory system</strong> designed to empower farmers with timely, location-specific insights. 
+        Our mission is to transform traditional farming into smart, data-driven agriculture using technology that’s both powerful and easy to use.
+      </p>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="info-section">
+      <h2>Key Features</h2>
+      <ul>
+        <li><strong>Real-time Weather Data:</strong> Stay up-to-date with weather conditions in your region.</li>
+        <li><strong>Personalized Crop Recommendations:</strong> Get crop suggestions tailored to your location and weather.</li>
+        <li><strong>User Dashboard:</strong> Track your crop history and gain insights into weather trends and crop performance.</li>
+        <li><strong>Easy Access:</strong> Access all features through an intuitive, user-friendly interface.</li>
+        <li><strong>Pest & Disease Alert System:</strong> Receive real-time alerts on common pests/diseases and control recommendations based on weather and region.</li>
+        <li><strong>AI-Based Crop Yield Prediction:</strong> Leverage machine learning to forecast crop yields based on past trends, weather data, soil health, and farm inputs.</li>
+      </ul>
+    </section>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FarmSmart News</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ✅ Full-page CSS Styling -->
+  <style>
+    body {
+      background-color: #f9fdf8;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Full-width News Section */
+    #news-section {
+      background-color: #e8f5e9;
+      padding: 30px;
+      margin: 0;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.15);
+    }
+
+    #news-section h2 {
+      color: #1b5e20;
+      font-size: 32px;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    /* News Container */
+    #news-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    /* News Item */
+    #news-list li {
+      background: #ffffff;
+      border-left: 5px solid #4caf50;
+      width: 30%;
+      margin: 10px;
+      padding: 20px;
+      border-radius: 10px;
+      transition: background 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 128, 0, 0.1);
+    }
+
+    #news-list li:hover {
+      background-color: #f1f8e9;
+      transform: scale(1.05);
+    }
+
+    #news-list a {
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: 600;
+      font-size: 18px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    #news-list a:hover {
+      text-decoration: underline;
+      color: #1b5e20;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      #news-list li {
+        width: 48%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #news-list li {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ✅ Full-width News Section -->
+  <div id="news-section">
+    <h2>🌾Latest Farming News🌾</h2>
+    <ul id="news-list">
+      <li>Loading news...</li>
+    </ul>
+  </div>
+
+  <!-- ✅ JavaScript to Fetch News -->
+  <script>
+    const apiKey = "d4822f1dfc064055a470e32b1444161c"; // Replace with your API key
+    const url = `https://api.allorigins.win/get?url=${encodeURIComponent('https://newsapi.org/v2/everything?q=agriculture india&sortBy=publishedAt&language=en&apiKey=' + apiKey)}`;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        const parsed = JSON.parse(data.contents);
+        const articles = parsed.articles;
+        const newsList = document.getElementById('news-list');
+        newsList.innerHTML = ''; // Clear loading text
+
+        if (articles.length === 0) {
+          newsList.innerHTML = "<li>No farming news found right now.</li>";
+          return;
+        }
+
+        articles.slice(0, 6).forEach(article => {
+          const li = document.createElement('li');
+          li.innerHTML = `<a href="${article.url}" target="_blank">${article.title}</a>`;
+          newsList.appendChild(li);
+        });
+      })
+      .catch(error => {
+        console.log("Error fetching news:", error);
+        document.getElementById('news-list').innerHTML =
+          "<li>Error loading news. Please try again later.</li>";
+      });
+  </script>
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FarmSmart-Live Crop Prices</title>
+  <style>
+    body {
+      background-color: #f9fdf8;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Full-width News Section */
+    #news-section {
+      background-color: #e8f5e9;
+      padding: 30px;
+      margin: 0;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.15);
+      margin-bottom: 40px; /* Added margin to create space before next section */
+    }
+
+    #news-section h2 {
+      color: #1b5e20;
+      font-size: 32px;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    /* News Container */
+    #news-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    /* News Item */
+    #news-list li {
+      background: #ffffff;
+      border-left: 5px solid #4caf50;
+      width: 30%;
+      margin: 10px;
+      padding: 20px;
+      border-radius: 10px;
+      transition: background 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 128, 0, 0.1);
+    }
+
+    #news-list li:hover {
+      background-color: #f1f8e9;
+      transform: scale(1.05);
+    }
+
+    #news-list a {
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: 600;
+      font-size: 18px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    #news-list a:hover {
+      text-decoration: underline;
+      color: #1b5e20;
+    }
+
+    /* Add space between sections */
+    .info-section {
+      padding: 40px 20px; /* Increase padding for better spacing */
+      margin-bottom: 40px; /* Added margin for spacing between sections */
+    }
+
+    .price-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+      margin-bottom: 40px; /* Added margin */
+    }
+
+    /* Price Cards */
+    .price-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 128, 0, 0.15);
+      width: 280px;
+      padding: 20px;
+      transition: transform 0.3s;
+      animation: slideIn 0.5s ease;
+    }
+
+    .price-card:hover {
+      transform: scale(1.05);
+    }
+
+    .price-card h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      color: #388e3c;
+    }
+
+    .price-card p {
+      margin: 4px 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .refresh-btn {
+      display: block;
+      margin: 20px auto 40px;
+      padding: 12px 25px;
+      background-color: #43a047;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .refresh-btn:hover {
+      background-color: #2e7d32;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .price-card {
+        width: 90%;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+    }
+
+    .top-boxes, .bottom-boxes {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding-bottom: 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      padding: 30px 20px 10px;
+      font-size: 32px;
+      color: #43a047; /* Plain green color */
+      margin-top: 60px; /* Added margin to create a comfortable gap at the top */
+    }
+
+    footer {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5); /* Black with 50% transparency */
+  color: white;
+  text-align: center;
+  margin-top: 60px; /* Added margin for spacing at the bottom */
+}
+
+  </style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FarmSmart - Weather Advisory</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('bg.jpeg') no-repeat center center/cover;
+      background-attachment: fixed;
+    }
+
+    .white-box {
+      background-color: #ffffff;
+      border-radius: 16px;
+      margin: 60px auto;
+      padding: 40px 30px;
+      max-width: 900px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .weather-link {
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3rem;
+      padding: 16px 30px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      color: #fff;
+      box-shadow: 0 6px 16px rgba(0, 114, 255, 0.4);
+      animation: bounce 2s infinite;
+      display: inline-block;
+      transition: transform 0.3s ease;
+      margin-bottom: 25px;
+    }
+
+    .weather-link:hover {
+      transform: scale(1.08);
+      box-shadow: 0 10px 25px rgba(0, 114, 255, 0.6);
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .weather-link::before {
+      content: "🌦️ ";
+      font-size: 1.5rem;
+    }
+
+    .section-heading {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin: 15px 0 10px;
+      color: #333;
+    }
+
+    .section-text {
+      font-size: 1rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Weather Section - ONE WHITE BOX -->
+  <div class="white-box">
+    <a href="sample.html" class="weather-link">
+      Check current weather & get smart farming tips
+    </a>
+    <div class="section-heading">🌤️ Your Local Weather & Farming Advice</div>
+    <div class="section-text">
+      Here we will show the current weather based on your location and suggest suitable farming activities.
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+
+
+</head>
+
+<body>
+
+  <h2 class="section-title">🌽Live Crop Prices🌽</h2>
+
+  <!-- Top 6 Boxes -->
+  <div class="top-boxes" id="topPriceCards"></div>
+
+  <!-- Bottom 6 Boxes -->
+  <div class="bottom-boxes" id="bottomPriceCards"></div>
+
+  <button class="refresh-btn" onclick="fetchCropPrices()">🔁 Refresh Prices</button>
+
+  <script>
+    const API_KEY = "579b464db66ec23bdd000001522e2891f2d74a8a73c9e266d1af5612"; // <<-- Replace this with your actual key
+    const API_URL = `https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=${API_KEY}&format=json&limit=12`;
+
+    async function fetchCropPrices() {
+      const topContainer = document.getElementById('topPriceCards');
+      const bottomContainer = document.getElementById('bottomPriceCards');
+      topContainer.innerHTML = '<p style="text-align:center;">Loading crop prices...</p>';
+      bottomContainer.innerHTML = '';
+
+      try {
+        const res = await fetch(API_URL);
+        const data = await res.json();
+
+        topContainer.innerHTML = ''; // Clear loading message for top box
+
+        // Separate first 6 items for top boxes
+        data.records.slice(0, 6).forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'price-card';
+          card.innerHTML = `
+            <h3>${item.commodity}</h3>
+            <p><strong>Market:</strong> ${item.market}</p>
+            <p><strong>State:</strong> ${item.state}</p>
+            <p><strong>Min Price:</strong> ₹${item.min_price}</p>
+            <p><strong>Max Price:</strong> ₹${item.max_price}</p>
+            <p><strong>Date:</strong> ${item.arrival_date}</p>
+          `;
+          topContainer.appendChild(card);
+        });
+
+        // Add next 6 items for bottom boxes
+        data.records.slice(6, 12).forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'price-card';
+          card.innerHTML = `
+            <h3>${item.commodity}</h3>
+            <p><strong>Market:</strong> ${item.market}</p>
+            <p><strong>State:</strong> ${item.state}</p>
+            <p><strong>Min Price:</strong> ₹${item.min_price}</p>
+            <p><strong>Max Price:</strong> ₹${item.max_price}</p>
+            <p><strong>Date:</strong> ${item.arrival_date}</p>
+          `;
+          bottomContainer.appendChild(card);
+        });
+      } catch (error) {
+        topContainer.innerHTML = `<p style="color:red; text-align:center;">❌ Failed to load data. Check your API key or internet connection.</p>`;
+        console.error("Error fetching crop prices:", error);
+      }
+    }
+
+    // Load data on page load
+    window.onload = fetchCropPrices;
+  </script>
+
+  <!-- Contact Section -->
+  <section id="contact" class="info-section">
+    <h2>Contact Us</h2>
+    <p>If you have any questions or need help, feel free to reach out to us:</p>
+    <ul>
+      <li>Email: <a href="mailto:support@farmsmart.com">support@farmsmart.com</a></li>
+      <li>Phone: +1 (800) 123-4567</li>
+      <li>Follow us on social media:
+        <ul>
+          <li><a href="https://www.youtube.com/@AgriTechTelugu" class="social-link">Youtube</a></li>
+          <li><a href="https://x.com/AgriTechTelugu" class="social-link">Twitter</a></li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2025 FarmSmart. All rights reserved.</p>
+    <p>Developed with 💚 for smarter farming.</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

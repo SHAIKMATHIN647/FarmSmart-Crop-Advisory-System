@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - FarmSmart</title>
+  <link rel="stylesheet" href="register.css" />
+</head>
+<body>
+  <div class="register-container">
+    <h2 class="animate-down">JOIN FARM SMART</h2>
+    <p class="subtext">Register to access your personalized farming dashboard</p>
+
+    <!-- Registration Form -->
+    <form action="register.php" method="POST" class="register-form" onsubmit="return registerAndRedirect(event)">
+      <div class="custom-cursor"></div>
+      
+      <!-- Input Fields -->
+      <input type="text" class="fancy-input" placeholder="🌱 Full Name" required />
+      <input type="email" class="fancy-input" placeholder="📧 Email Address" required />
+      <input type="password" class="fancy-input" id="password" placeholder="🔒 Password" required />
+      <input type="password" class="fancy-input" id="confirmPassword" placeholder="🔐 Confirm Password" required />
+      
+      <!-- Error Message for Password Mismatch -->
+      <span id="error-message" class="error" style="color: red;"></span><br>
+
+      <button type="submit">Register</button>
+
+      <!-- Login Link -->
+      <p class="login-link">Already have an account? <a href="login.html">Login here</a></p>
+    </form>
+  </div>
+
+  <script>
+    // Handle form submission and validate passwords
+    function registerAndRedirect(event) {
+      event.preventDefault();  // Prevent default form submission
+
+      // Get password and confirm password values
+      var password = document.getElementById('password').value;
+      var confirmPassword = document.getElementById('confirmPassword').value;
+
+      // Check if the passwords match
+      if (password !== confirmPassword) {
+        // Display error message if passwords don't match
+        document.getElementById('error-message').textContent = 'Passwords do not match!';
+        return false;  // Prevent form submission
+      }
+
+      // If passwords match, clear any error message
+      document.getElementById('error-message').textContent = '';
+
+      // Proceed with form submission and redirect to home.html with a success message
+      window.location.href = "home.html?registration=success";  // Redirect with query string
+      return true;  // Allow form submission
+    }
+  </script>
+</body>
+</html>

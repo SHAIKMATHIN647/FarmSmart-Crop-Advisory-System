@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <header class="header">
+    <h1 class="blinking">☎FARM SMART☎</h1>
+  </header>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - FarmSmart</title>
+  <link rel="stylesheet" href="contact.css" />
+</head>
+<body>
+  <div class="contact-wrapper">
+    <!-- Left Section (Image + Info) -->
+    <div class="contact-info">
+      <img src="contact.jpg" alt="Contact Us" class="contact-image" />
+      <h2>🌿Let's Connect🌿</h2>
+      <p>We’re here to help with your farming journey.</p>
+      <ul>
+        <section id="contact" class="info-section">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or need help, feel free to reach out to us:</p>
+            <ul>
+              <li>Email: <a href="mailto:support@farmsmart.com">support@farmsmart.com</a></li>
+              <li>Phone: +1 (800) 123-4567</li>
+              <li>Follow us on social media:
+                <ul>
+                  <li><a href="https://www.youtube.com/@AgriTechTelugu" class="social-link">Youtube</a></li>
+                  <li><a href="https://x.com/AgriTechTelugu" class="social-link">Twitter</a></li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+      </ul>
+    </div>
+
+    <!-- Right Section (Form) -->
+    <div class="contact-form">
+      <h2>Contact FarmSmart</h2>
+      <p>Send us a message and we’ll get back to you shortly.</p>
+      <form id="contactForm" action="#" method="POST">
+        <input type="text" name="name" placeholder="👤 Your Name" required />
+        <input type="email" name="email" placeholder="📧 Your Email" required />
+        <input type="text" name="subject" placeholder="📌 Subject" required />
+        <textarea name="message" rows="5" placeholder="✍️ Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+
+      <!-- Success Message -->
+      <div id="successMessage" style="display: none; color: #66bb6a; margin-top: 1rem;">
+        <h3 style="text-transform: uppercase; font-weight: bold;">Thank you for contacting us! 🌱</h3>
+        <p style="text-transform: uppercase; font-weight: bold;">
+          We appreciate your message and will get back to you as soon as possible. Have a great day!
+        </p>
+      </div>
+      
+  </div>
+
+  <script>
+    // Get the form and success message elements
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+
+    // Add an event listener to handle form submission
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      // Hide the form and show the success message
+      form.style.display = 'none';
+      successMessage.style.display = 'block';
+    });
+  </script>
+  <footer class="footer">
+    <p class="footer-text">© 2025 FarmSmart. All rights reserved.</p>
+
+  </footer>
+  
+</body>
+</html>

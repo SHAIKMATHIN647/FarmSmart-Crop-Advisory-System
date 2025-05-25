@@ -1,0 +1,345 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f9fdf9;
+    color: #333;
+  }
+  
+  .contact-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+  }
+  
+  .contact-info {
+    flex: 1;
+    background: #e8f5e9;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .contact-info img {
+    max-width: 280px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-info h2 {
+    margin: 0.5rem 0;
+    color: #2e7d32;
+  }
+  
+  .contact-info ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+  
+  .contact-info li {
+    margin: 0.5rem 0;
+  }
+  
+  .contact-form {
+    flex: 1;
+    background: #ffffff;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .contact-form h2 {
+    color: #388e3c;
+    margin-bottom: 0.5rem;
+  }
+  
+  .contact-form p {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    padding: 0.75rem 1rem;
+    border: 1px solid #cce5cc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border 0.3s;
+  }
+  
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: #66bb6a;
+    outline: none;
+  }
+  
+  .contact-form button {
+    padding: 0.75rem;
+    background-color: #43a047;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .contact-form button:hover {
+    background-color: #388e3c;
+  }
+  
+  .back-link {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .back-link a {
+    color: #2e7d32;
+    text-decoration: none;
+  }
+  
+  .back-link a:hover {
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-wrapper {
+      flex-direction: column;
+    }
+  
+    .contact-info,
+    .contact-form {
+      width: 100%;
+    }
+  }
+  .contact-info-section {
+    margin-top: 2rem;
+    font-size: 0.95rem;
+    color: #ddd;
+  }
+  
+  .contact-info-section h2 {
+    color: #66bb6a;
+    margin-bottom: 0.5rem;
+  }
+  
+  .contact-info-section ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0.5rem;
+  }
+  
+  .contact-info-section ul > li {
+    margin: 0.5rem 0;
+  }
+  
+  .contact-info-section ul ul {
+    padding-left: 1.2rem;
+  }
+  
+  .social-link {
+    color: #a5d6a7;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .social-link:hover {
+    color: #81c784;
+    text-decoration: underline;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    background: linear-gradient(135deg, #000, #1a1a1a);
+    background-attachment: fixed;
+    color: #fff;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Main container with 50-50 split */
+  .contact-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Left: Contact Info - Full left side */
+  .contact-info {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Right: Form - Full right side */
+  .contact-form {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  /* Style image */
+  .contact-image {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Glassy input styling */
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+  }
+  
+  /* Button styling */
+  .contact-form button {
+    background: #00ff99;
+    color: #000;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  /* Make back link and success message readable */
+  .back-link a,
+  .contact-info a {
+    color: #00e6e6;
+  }
+  
+  /* Responsive for smaller screens */
+  @media (max-width: 768px) {
+    .contact-wrapper {
+      flex-direction: column;
+      height: auto;
+    }
+  
+    .contact-info,
+    .contact-form {
+      width: 100%;
+      border-right: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('b5.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    overflow: hidden;
+  }
+    /* Footer Styles */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Transparent black */
+  text-align: center;
+  padding: 0.5rem 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.footer-text {
+  color: darkgreen;
+  font-size: 0.9rem;
+  animation: blink 1.2s infinite;
+}
+
+/* Blinking animation */
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+/* Add this to your existing CSS */
+
+#successMessage h3,
+#successMessage p {
+  text-transform: uppercase;
+  font-weight: bold;
+  animation: blink 1.5s infinite;
+}
+
+/* Blinking animation */
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+/* Header Styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(8, 7, 7, 0.7); /* Transparent black */
+  color: #1fb81f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+/* Blinking text effect */
+.blinking {
+  font-size: 2rem;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: blink 1.5s infinite;
+}
+
+/* Blinking animation */
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+.footer-text {
+  font-weight: bold; /* Make text bold */
+  color: #0f4512; /* Adjust color if needed */
+}

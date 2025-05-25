@@ -1,0 +1,205 @@
+<style>
+  body {
+    font-family: "Segoe UI", sans-serif;
+    background: url('images/bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    padding: 40px;
+    margin: 0;
+  }
+
+  h2 {
+    color: #388e3c;
+    font-size: 28px;
+  }
+
+  button {
+    background-color: #66bb6a;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s;
+  }
+
+  button:hover {
+    background-color: #558b2f;
+  }
+
+  #recommendation-result {
+    margin-top: 25px;
+    padding: 24px;
+    background-color: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    line-height: 1.6;
+    animation: fadeIn 0.6s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h3 {
+    margin-top: 20px;
+    color: #2e7d32;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+    margin-right: 6px;
+  }
+
+  .soil { background-color: #8d6e63; }
+  .temp { background-color: #ff7043; }
+  .season { background-color: #42a5f5; }
+
+  ul {
+    padding-left: 20px;
+    margin: 0;
+  }
+
+  .loading {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border: 3px solid #c8e6c9;
+    border-top: 3px solid #4caf50;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .icon-section {
+    font-size: 22px;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    color: #689f38;
+  }
+
+  li {
+    margin-bottom: 6px;
+  }
+</style>
+
+<h2>🌾 Smart Crop Recommendations</h2>
+<button onclick="recommendCrops()">Get Crop Suggestions 🌿</button>
+<div id="recommendation-result"></div>
+
+<script>
+  function recommendCrops() {
+    const output = document.getElementById("recommendation-result");
+    output.innerHTML = `<div class="loading"></div> Fetching soil and weather data...`;
+
+    if (!navigator.geolocation) {
+      output.innerHTML = "❌ Geolocation not supported.";
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(async (pos) => {
+      const lat = pos.coords.latitude;
+      const lon = pos.coords.longitude;
+      const weatherAPIKey = "a63b0e18099c21bd9c5e7ce9f319410d";
+
+      try {
+        const soilRes = await fetch(`https://rest.isric.org/soilgrids/v2.0/properties/query?lon=${lon}&lat=${lat}&property=phh2o&property=ocd`, {
+          headers: { Accept: "application/json" }
+        });
+        const soilData = await soilRes.json();
+        const ph = soilData.properties.phh2o?.layers?.[0]?.depths?.[0]?.values?.mean || 7;
+        const carbon = soilData.properties.ocd?.layers?.[0]?.depths?.[0]?.values?.mean || 10;
+
+        const weatherRes = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${weatherAPIKey}`);
+        const weatherData = await weatherRes.json();
+        const temp = weatherData.main.temp;
+
+        const month = new Date().getMonth() + 1;
+        let season = "Unknown";
+        if ([6, 7, 8, 9].includes(month)) season = "🌧️ Kharif";
+        else if ([10, 11, 12, 1].includes(month)) season = "🌾 Rabi";
+        else season = "☀️ Zaid";
+
+        let crops = [];
+        let activities = [];
+
+        if (ph >= 6 && ph <= 7.5 && temp >= 25 && temp <= 35 && season.includes("Kharif")) {
+          crops.push("🌾 Rice", "🌿 Soybean", "🌽 Maize", "🍅 Tomato", "🌶️ Chilli");
+          activities.push("🚜 Prepare land with good drainage & seed beds for rice and maize.");
+        }
+
+        if (ph >= 6 && ph <= 7 && temp >= 15 && temp <= 30 && season.includes("Rabi")) {
+          crops.push("🥔 Potato", "🌾 Wheat", "🥬 Mustard", "🌽 Barley", "🧄 Garlic");
+          activities.push("🌱 Sow wheat and barley with minimal tillage and moisture conservation.");
+        }
+
+        if (season.includes("Zaid")) {
+          crops.push("🍉 Watermelon", "🥒 Cucumber", "🌽 Baby Corn");
+          activities.push("💧 Maintain irrigation cycles for fast-growing summer crops.");
+        }
+
+        if (ph < 5.5) {
+          crops.push("🌰 Groundnut", "🍠 Sweet Potato");
+          activities.push("🧪 Apply lime to reduce acidity in soil.");
+        } else if (ph >= 5.5 && ph < 6) {
+          crops.push("🥬 Spinach", "🥦 Broccoli", "🍆 Eggplant");
+          activities.push("🌿 Good for leafy and root vegetables.");
+        } else if (ph >= 7.5 && ph <= 8) {
+          crops.push("🌾 Barley", "🍞 Oats");
+          activities.push("🧂 Slightly alkaline soil—suitable for grains like oats and barley.");
+        }
+
+        if (carbon < 5) {
+          activities.push("🪴 Add compost or green manure to boost organic carbon.");
+        } else if (carbon >= 5 && carbon < 10) {
+          activities.push("🌿 Maintain carbon with regular mulching.");
+        }
+
+        if (temp > 35) {
+          crops.push("🍉 Watermelon", "🍊 Orange");
+          activities.push("☀️ High heat crops—ensure frequent watering.");
+        } else if (temp < 20) {
+          crops.push("🥬 Spinach", "🥥 Coconut");
+          activities.push("❄️ Cooler weather crops recommended.");
+        }
+
+        if (crops.length === 0) {
+          crops.push("❌ No suitable crops found for these conditions.");
+        }
+
+        output.innerHTML = `
+          <h3>📍 Location: ${lat.toFixed(2)}, ${lon.toFixed(2)}</h3>
+          <div class="icon-section">
+            <span class="badge soil">🧪 Soil pH: ${ph.toFixed(2)}</span>
+            <span class="badge temp">🌡️ Temp: ${temp}°C</span>
+            <span class="badge season">${season}</span>
+          </div>
+          <p><strong>Organic Carbon:</strong> ${carbon} g/kg</p>
+          <hr>
+          <h3>✅ Recommended Crops:</h3>
+          <ul>${crops.map(crop => `<li>${crop}</li>`).join("")}</ul>
+          <h3>🔧 Suggested Farming Activities:</h3>
+          <ul>${activities.map(activity => `<li>${activity}</li>`).join("")}</ul>
+        `;
+      } catch (err) {
+        console.error(err);
+        output.innerHTML = "❌ Failed to fetch data. Please try again.";
+      }
+    });
+  }
+</script>
+ 

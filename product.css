@@ -1,0 +1,500 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #f5fff5;
+  color: #2e7d32;
+}
+
+header {
+  text-align: center;
+  padding: 2rem;
+  background-color: #a5d6a7;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+h1 {
+  font-size: 1 rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #c8e6c9;
+  box-shadow: 0 2px 8px rgba(0, 128, 0, 0.1);
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 128, 0, 0.2);
+}
+
+.product-card img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.product-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #1b5e20;
+}
+
+.product-card p {
+  font-size: 0.95rem;
+  color: #4caf50;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: url('bg.jpeg') no-repeat center center/cover;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(to right, rgba(224, 247, 250, 0.8), rgba(232, 245, 233, 0.8)), 
+              url('bg.jpeg') no-repeat center center/cover;
+}
+header {
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white;
+  text-align: center;
+  padding: 40px 0;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  position: relative;
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 5px;
+  background: white;
+  border-radius: 5px;
+}
+/* Header Styling */
+header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 50px 0;
+}
+
+/* FarmSmart Header Animation */
+header h1 {
+  font-size: 1em;
+  color: #4CAF50; /* Green */
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  font-weight: 900; /* Bold */
+  animation: headerAnimation 3s ease-in-out infinite alternate;
+  transition: all 0.3s ease;
+}
+
+/* Header Animation */
+@keyframes headerAnimation {
+  0% {
+    color: #4CAF50; /* Green */
+    transform: scale(1);
+  }
+  50% {
+    color: #1e7033; /* Darker Green */
+    transform: scale(1.1);
+  }
+  100% {
+    color: #4CAF50; /* Green */
+    transform: scale(1);
+  }
+}
+/* Header Styling */
+header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 40px 0;
+}
+
+/* FarmSmart Header Animation */
+header h1 {
+  font-size: 1em;  /* Reduced size for a more compact header */
+  color: #2E8B57;  /* Muted green for a softer effect */
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: 800; /* Bold but not overpowering */
+  animation: headerAnimation 2s ease-in-out infinite alternate;
+  transition: all 0.3s ease;
+}
+
+/* Header Animation */
+@keyframes headerAnimation {
+  0% {
+    color: #2E8B57; /* Muted Green */
+    transform: scale(1);
+  }
+  50% {
+    color: #3CB371; /* Slightly brighter green */
+    transform: scale(1.05);
+  }
+  100% {
+    color: #2E8B57; /* Back to muted green */
+    transform: scale(1);
+  }
+}
+/* Header Styling */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 20px 0;
+}
+
+/* FarmSmart Header Animation */
+header h1 {
+  font-size: 1.5em;  /* Reduced size for a smaller, more compact header */
+  color: #2E8B57;  /* Muted green for a softer effect */
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 700; /* Bold but more subtle */
+  animation: headerAnimation 2.5s ease-in-out infinite alternate;
+  transition: all 0.3s ease;
+}
+
+/* Header Animation */
+@keyframes headerAnimation {
+  0% {
+    color: #2E8B57; /* Muted Green */
+    transform: scale(1);
+  }
+  50% {
+    color: #3CB371; /* Slightly brighter green */
+    transform: scale(1.03); /* Slightly smaller scale for a more subtle effect */
+  }
+  100% {
+    color: #2E8B57; /* Back to muted green */
+    transform: scale(1);
+  }
+}
+/* Reset and Base */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #111;
+  color: white;
+  min-height: 100vh;
+}
+
+a {
+  color: #90ee90;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #c0ffc0;
+  text-decoration: underline;
+}
+
+/* Header */
+.glassy-header {
+  text-align: center;
+  padding: 25px 0;
+  font-size: 2.5rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+/* Product Cards */
+.product-card {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 10px #000;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #66bb6a;
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 12px;
+  max-height: 160px;
+  object-fit: cover;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 1.2s ease forwards;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('bg4.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  min-height: 100vh;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('bg4.jpg') no-repeat center center fixed;
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  color: white;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.product-scroll {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  gap: 30px;
+  padding: 40px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+.product-scroll::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Chrome/Safari */
+}
+
+.product-card {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  width: 250px;
+  color: #fff;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+}
+
+.product-card img {
+  max-width: 100%;
+  height: 160px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.product-card h2 {
+  font-size: 1.1rem;
+  color: #00ff99;
+  margin-bottom: 10px;
+}
+
+.product-card p,
+.product-card a {
+  color: #cceeff;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.product-card a:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url('bg4.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 2em;
+  font-weight: bold;
+  color: #00cc66;
+}
+
+.product-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.center-row {
+  justify-content: center;
+}
+
+.product-card {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  width: 200px;
+  transition: transform 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.product-card img {
+  width: 120px;
+  height: 140px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.product-card h2 {
+  color: #00cc66;
+  margin-bottom: 10px;
+}
+
+.product-card a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer {
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  margin-top: 40px;
+  color: white;
+}
+a {
+  text-decoration: none;
+  font-weight: bold; /* Make the text bold */
+  color: black; /* Initial link color */
+  animation: blink 1s infinite alternate; /* Apply animation */
+  font-size: 1.2em; /* Increase font size for better visibility */
+}
+
+@keyframes blink {
+  0% {
+    color: rgb(0, 255, 55);
+  }
+  100% {
+    color: white;
+  }
+}
+.footer {
+  text-align: center; /* Center the text */
+  font-size: 1.5em; /* Increase font size for visibility */
+  font-weight: bold; /* Make the text bold */
+  color: black; /* Initial color */
+  animation: footerBlink 1.5s infinite alternate; /* Blinking animation */
+  padding: 20px 0; /* Add some padding for spacing */
+  text-transform: uppercase; /* Make text uppercase */
+  letter-spacing: 2px; /* Add letter spacing for a more dramatic effect */
+  font-family: Arial, sans-serif; /* Make the font clean and modern */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add shadow for extra visual effect */
+}
+
+@keyframes footerBlink {
+  0% {
+    color: black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    color: darkgreen;
+    text-shadow: 2px 2px 10px rgba(0, 128, 0, 0.5);
+  }
+  100% {
+    color: darkblue;
+    text-shadow: 2px 2px 4px rgba(0, 0, 128, 0.3);
+  }
+}
+.go-back {
+  display: inline-block;
+  padding: 6px 8px;  /* Smaller padding */
+  background-color: #00ffcc;
+  color: white;
+  font-size: 0.9em;  /* Slightly smaller font size */
+  border-radius: 10px;  /* Reduced border radius for a less rounded button */
+  text-decoration: none;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.go-back:hover {
+  background-color: #00ccaa;
+  transform: scale(1.05);
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
+}

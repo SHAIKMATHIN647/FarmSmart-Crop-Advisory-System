@@ -1,0 +1,39 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - FarmSmart</title>
+  <nav>
+    <h1>FarmSmart</h1>
+    <ul>
+      <li><a href="weather.html">Weather</a></li>
+      <li><a href="product.html">Products</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="forgot.html">Forgot</a></li>
+    </ul>
+  </nav>
+  <link rel="stylesheet" href="register.css" />
+</head>
+<body>
+  <div class="register-container">
+    <h2 class="register-header"><span>🌾Welcome Back🌾</span></h2>
+    <p class="subtext">Log in to your FarmSmart dashboard</p>
+
+    <form action="#" method="POST" class="register-form">
+      <input type="email" class="fancy-input" placeholder="📧 Email Address" required />
+      <input type="password" class="fancy-input" placeholder="🔐 Password" required />
+      
+      <!-- Forgot Password link below Password input -->
+      <p class="forgot-password">
+        <a href="forgot-password.html">Forgot Password?</a>
+      </p>
+
+      <button type="submit">Login</button>
+
+      <p class="login-link">Don’t have an account? <a href="register.html">Register here</a></p>
+    </form>
+  </div>
+</body>
+</html>
